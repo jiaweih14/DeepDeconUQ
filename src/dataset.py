@@ -140,12 +140,12 @@ def GetDataset(name, base_path, is_1d = False, testing_dataset=None, scale=True,
     if name.startswith('aml'):
         subject = name[4:]
         if scale:
-            adata = anndata.read_h5ad(base_path+'aml_data_no_beat.h5ad')
+            adata = anndata.read_h5ad(base_path+'simudata.h5ad')
             prefix = subject+'_200'
             tmp = anndata.read_h5ad(base_path+prefix+'.h5ad')
 
         else:
-            adata = anndata.read_h5ad(base_path+'dan/encoded_train1.h5ad')
+            adata = anndata.read_h5ad(base_path+'dan/encoded_train.h5ad')
             prefix = 'encoded_'+subject
             tmp = anndata.read_h5ad(base_path+'aml/data/dan/'+prefix+'.h5ad')
     
@@ -188,7 +188,7 @@ def GetDataset(name, base_path, is_1d = False, testing_dataset=None, scale=True,
 def get_real_data(dataset_name, testing_dataset, scale=True, noise = 0):
     is_1d = '1d_' in dataset_name
     dataset_name = dataset_name.replace("1d_", "")
-    X, y, test_size, cts = GetDataset(dataset_name, './UQ/aml/data/', is_1d, testing_dataset=testing_dataset, scale=scale, noise = noise)
+    X, y, test_size, cts = GetDataset(dataset_name, './dataset/', is_1d, testing_dataset=testing_dataset, scale=scale, noise = noise)
     X = torch.Tensor(X)
     y = torch.Tensor(y)
 

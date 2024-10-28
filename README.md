@@ -16,14 +16,15 @@ Here, we introduce `DeepDeconUQ`, a neural network model designed to estimate th
 Download DeepDeconUQ by
 
 ```git
-git clone https://github.com/Jiawei-Huang/DeepDecon.git
+git clone https://github.com/jiaweih14/DeepDeconUQ.git
 ```
 The installation has been tested in a Linux and Mac OS platform with Python3.11. GPU is recommended for accelerating the training process.
 
 ### Instructions
 This section provides instructions on how to run DeepDecon with scRNA-seq datasets.
 #### Data Preparation
-Several scRNA-seq AML datasets have been prepared as the input of the DeepDeconUQ model. One can get the scRNA-seq AML data from Gene Expression Omnibus (GEO) under accession number GSE116256. We also provide a dataset under dataset folder.
+Several scRNA-seq AML datasets have been prepared as the input of the DeepDeconUQ model. One can get the scRNA-seq AML data from Gene Expression Omnibus (GEO) under accession number GSE116256. We also provide a simulated dataset and relevent codes at zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13999712.svg)](https://doi.org/10.5281/zenodo.13999712)
+.
 #### Bulk sample simulation
 DeepDeconUQ constructs bulk RNA-seq samples through the `get_bulk_samples.py` script. One can try to generate a bulk RNA-seq dataset with any ratio of malignant cell by running
 ```bash
@@ -83,17 +84,6 @@ options:
   --scaler SCALER       standard or minmax scaler
   --test_dataset TEST_DATASET
                         testing dataset name, None means no testing dataset, use test_ratio to split the data
-```
-#### Model evaluation
-Next, people can get predictions by running
-```bash
-python eval.py [--cells CELLS] [--dir DIR] [--filepath FILEPATH] [--sub_idx SUB_IDX]
-
---cells CELLS        Number of cells to use for each bulk sample.
---dir DIR            Training data directory
---filepath FILEPATH  Testing file path
---sub_idx SUB_IDX    Testing subject index, 0-14 refers to subjects in the
-                    training datasets, 15 means new dataset.
 ```
 
 ### Tutorial
